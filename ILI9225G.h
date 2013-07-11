@@ -19,13 +19,24 @@
 #define CYAN           0x7FFF
 #define YELLOW         0xFFE0
 #define ORANGE		   0xF900
-#define FONT_WIDTH      5
-#define FONT_HEIGHT     7
+//#define FONT_WIDTH      8
+//#define FONT_HEIGHT    15
+#define FONT_LENGTH			0
+#define FONT_FIXED_WIDTH	2
+#define FONT_HEIGHT			3
+#define FONT_FIRST_CHAR		4
+#define FONT_CHAR_COUNT		5
+#define FONT_WIDTH_TABLE	6
 
 class ILI9225G {
 public:
-	int cs;
-	int rs;
+	const uint8_t*	Font;
+	uint8_t fontWidth;
+	uint8_t fontHeight;
+	uint8_t fontFirstChar;
+//public:
+	int	cs;
+	int	rs;
 	int rst;
 	int mosi;
 	int sclk;
@@ -49,6 +60,7 @@ public:
 			unsigned short f_clr, unsigned short b_clr, unsigned short size);
 	void printString(String s, unsigned char x, unsigned char y,
 			unsigned short f_clr, unsigned short b_clr, unsigned short size);
+	void selectFont(const uint8_t* font);
 
 };
 
